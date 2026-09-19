@@ -3,7 +3,7 @@ window.ADHISTHAN_CONFIG = {
 
   API_BASE_LOCAL: "http://127.0.0.1:5000",
 
-  API_BASE_PRODUCTION: "https://REPLACE-WITH-YOUR-BACKEND-URL"
+  API_BASE_PRODUCTION: "https://backend-sigma-nine-88.vercel.app"
 };
 
 
