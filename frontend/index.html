@@ -25,16 +25,15 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="scroll-progress" id="scrollProgress"></div>
-
 <!-- ============ NAVIGATION ============ -->
 <header class="site-nav" id="siteNav">
-  <a class="nav-brand" href="#hero" aria-label="Adhishtan IAS home">
+  <a class="nav-brand" href="index.html" aria-label="Adhishtan IAS home">
     <img src="assets/logo.svg" alt="" width="34" height="34">
     <span class="nav-brand-text">
       <span class="nav-brand-hi devanagari">अधिष्ठान IAS</span>
@@ -43,17 +42,17 @@
   </a>
 
   <nav class="nav-links" aria-label="Primary">
-    <a href="#about" data-navlink>About</a>
-    <a href="#programs" data-navlink>Programs</a>
-    <a href="#bedrock" data-navlink>Syllabus</a>
-    <a href="#editorial" data-navlink>Editorial</a>
-    <a href="#pyq" data-navlink>PYQs</a>
-    <a href="#faculty" data-navlink>Faculty</a>
-    <a href="#events" data-navlink>Events</a>
+    <a href="pages/about.html" data-navlink>About</a>
+    <a href="pages/programs.html" data-navlink>Programs</a>
+    <a href="pages/syllabus.html" data-navlink>Syllabus</a>
+    <a href="pages/editorial.html" data-navlink>Editorial</a>
+    <a href="pages/pyq.html" data-navlink>PYQs</a>
+    <a href="pages/faculty.html" data-navlink>Faculty</a>
+    <a href="pages/events.html" data-navlink>Events</a>
   </nav>
 
   <div class="nav-cta">
-    <a class="btn btn-primary" href="#enquiry">Start Your Learning Journey</a>
+    <a class="btn btn-primary" href="pages/enquiry.html">Start Your Learning Journey</a>
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
       <span></span>
     </button>
@@ -61,14 +60,14 @@
 </header>
 
 <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-  <a href="#about" data-navlink>About</a>
-  <a href="#programs" data-navlink>Programs</a>
-  <a href="#bedrock" data-navlink>Syllabus</a>
-  <a href="#editorial" data-navlink>Editorial</a>
-  <a href="#pyq" data-navlink>PYQs</a>
-  <a href="#faculty" data-navlink>Faculty</a>
-  <a href="#events" data-navlink>Events</a>
-  <a class="btn btn-primary" href="#enquiry">Start Your Learning Journey</a>
+  <a href="pages/about.html" data-navlink>About</a>
+  <a href="pages/programs.html" data-navlink>Programs</a>
+  <a href="pages/syllabus.html" data-navlink>Syllabus</a>
+  <a href="pages/editorial.html" data-navlink>Editorial</a>
+  <a href="pages/pyq.html" data-navlink>PYQs</a>
+  <a href="pages/faculty.html" data-navlink>Faculty</a>
+  <a href="pages/events.html" data-navlink>Events</a>
+  <a class="btn btn-primary" href="pages/enquiry.html">Start Your Learning Journey</a>
 </div>
 
 <main id="main">
@@ -91,8 +90,8 @@
           </h1>
           <p class="hero-sub">A structured UPSC Civil Services preparation experience built around the syllabus, previous-year questions, disciplined revision, current affairs and answer-centric learning.</p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="#enquiry">Start Your Learning Journey</a>
-            <a class="btn btn-ghost" href="#bedrock">Explore the Syllabus</a>
+            <a class="btn btn-primary" href="pages/enquiry.html">Start Your Learning Journey</a>
+            <a class="btn btn-ghost" href="pages/syllabus.html">Explore the Syllabus</a>
           </div>
         </div>
         <div class="hero-aside">
@@ -108,111 +107,6 @@
     </div>
     <div class="scroll-cue">SCROLL</div>
   </section>
-
-  <!-- ============ ABOUT ============ -->
-  <section class="section section-navy" id="about">
-    <div class="container">
-      <p class="about-lede" data-reveal>Preparation should create clarity, not noise.</p>
-      <div class="about-grid">
-        <article class="principle" data-reveal>
-          <p class="principle-index">FOUNDATION</p>
-          <h3>Know before you collect</h3>
-          <p>Understand the syllabus before collecting resources. Adhishtan begins every subject by mapping exactly what the examination demands, so preparation has a target instead of an ever-growing pile of material.</p>
-        </article>
-        <article class="principle" data-reveal>
-          <p class="principle-index">DISCIPLINE</p>
-          <h3>Systems over motivation</h3>
-          <p>Build consistent study and revision systems. A dependable weekly rhythm of reading, writing and revising carries an aspirant further than any single burst of motivation.</p>
-        </article>
-        <article class="principle" data-reveal>
-          <p class="principle-index">SERVICE</p>
-          <h3>Beyond the examination</h3>
-          <p>Prepare not only to clear an examination, but to understand the responsibility behind public service — the administrative judgment the examination is ultimately testing for.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ THE BEDROCK — SYLLABUS ============ -->
-  <section class="section section-light" id="bedrock">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">THE BEDROCK</p>
-        <h2>Know the terrain before you enter it.</h2>
-        <p class="lede">Four General Studies papers, tracked topic by topic. Select a paper, open a topic, and record your own progress — it stays on this device.</p>
-      </div>
-
-      <div class="bedrock-tabs" id="bedrockTabs" role="tablist" aria-label="General Studies papers"></div>
-
-      <div class="bedrock-layout">
-        <div class="topic-list" id="topicList" role="list" aria-label="Topics"></div>
-        <aside class="bedrock-panel" id="bedrockPanel" aria-live="polite">
-          <p class="panel-empty">Select a topic to view details and update your progress.</p>
-        </aside>
-      </div>
-
-      <div class="bedrock-foot">
-        <p class="bedrock-overall" id="bedrockOverall">Overall progress: 0%</p>
-        <button class="link-reset" id="resetSyllabus" type="button">Reset Progress</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROGRAMS ============ -->
-  <section class="section section-navy-deep" id="programs">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">PROGRAMS</p>
-        <h2>Programs built around the examination.</h2>
-      </div>
-      <div class="programs-grid" id="programsGrid"></div>
-    </div>
-  </section>
-
-  <!-- ============ DAILY EDITORIAL READER ============ -->
-  <section class="section section-light" id="editorial">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">DAILY EDITORIAL</p>
-        <h2>Read with the syllabus in view.</h2>
-        <p class="lede">Every editorial is mapped to the papers it feeds. Read the argument on the left; see where it belongs on the right.</p>
-      </div>
-
-      <div class="editorial-tabs" id="editorialTabs" role="tablist" aria-label="Editorials"></div>
-
-      <div class="editorial-layout">
-        <article class="editorial-article" id="editorialArticle" aria-live="polite"></article>
-        <aside class="editorial-side" id="editorialSide"></aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PYQ MATRIX ENGINE ============ -->
-  <section class="section section-light" id="pyq">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">PYQ MATRIX</p>
-        <h2>Study the questions. Discover the pattern.</h2>
-        <p class="lede">Search and filter a decade of previous-year questions.</p>
-      </div>
-
-      <div class="pyq-controls">
-        <div class="pyq-search-wrap">
-          <label class="sr-only" for="pyqSearch">Search previous-year questions</label>
-          <input type="search" id="pyqSearch" placeholder="Search previous-year questions...">
-        </div>
-        <select id="pyqYear" aria-label="Filter by year"><option value="">All years</option></select>
-        <select id="pyqExam" aria-label="Filter by exam"><option value="">All exams</option></select>
-        <select id="pyqPaper" aria-label="Filter by paper"><option value="">All papers</option></select>
-        <select id="pyqSubject" aria-label="Filter by subject"><option value="">All subjects</option></select>
-      </div>
-
-      <p class="pyq-results-meta" id="pyqResultsMeta" aria-live="polite"></p>
-      <div class="pyq-grid" id="pyqGrid"></div>
-      <button class="btn btn-ghost pyq-loadmore" id="pyqLoadMore" type="button">Load More</button>
-    </div>
-  </section>
-
   <!-- ============ LBSNAA TARGET CLOCK ============ -->
   <section class="section section-navy clock-section" id="clock">
     <div class="container">
@@ -234,7 +128,6 @@
       </form>
     </div>
   </section>
-
   <!-- ============ DAILY SANKALP DASHBOARD ============ -->
   <section class="section section-navy-deep" id="sankalp">
     <div class="container">
@@ -248,7 +141,6 @@
       </div>
     </div>
   </section>
-
   <!-- ============ WHY ADHISHTAN ============ -->
   <section class="section section-navy" id="why">
     <div class="container">
@@ -276,18 +168,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ============ FACULTY ============ -->
-  <section class="section section-navy-deep" id="faculty">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">FACULTY</p>
-        <h2>The people behind the papers.</h2>
-      </div>
-      <div class="faculty-grid" id="facultyGrid"></div>
-    </div>
-  </section>
-
   <!-- ============ ACHIEVEMENTS ============ -->
   <section class="section section-light" id="achievements">
     <div class="container">
@@ -299,7 +179,6 @@
       </div>
     </div>
   </section>
-
   <!-- ============ TESTIMONIALS ============ -->
   <section class="section section-navy" id="testimonials">
     <div class="container">
@@ -313,112 +192,14 @@
       </div>
     </div>
   </section>
-
-  <!-- ============ EVENTS ============ -->
-  <section class="section section-navy-deep" id="events">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">EVENTS</p>
-        <h2>Sessions worth clearing your evening for.</h2>
-      </div>
-      <div class="events-grid" id="eventsGrid"></div>
-    </div>
-  </section>
-
   <!-- ============ ADMISSION / ENQUIRY CTA ============ -->
   <section class="section section-navy cta-section" id="cta">
     <div class="container">
       <h2>Your preparation needs a foundation.</h2>
       <p class="lede">Stop collecting resources. Start building a system.</p>
       <div class="cta-buttons">
-        <a class="btn btn-primary" href="#enquiry">Start Your Learning Journey</a>
-        <a class="btn btn-ghost" href="#programs">Explore Programs</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ENQUIRY FORM + CONTACT ============ -->
-  <section class="section section-navy-deep" id="enquiry">
-    <div class="container contact-layout">
-      <div>
-        <p class="eyebrow">ENQUIRY</p>
-        <h2 style="font-size:var(--step-3); margin-top:0.6rem;">Tell us where you are in your preparation.</h2>
-        <form id="enquiryForm" novalidate>
-          <div class="form-grid">
-            <div class="form-field">
-              <label for="enqName">Full Name</label>
-              <input type="text" id="enqName" name="name" required>
-              <span class="form-error" id="enqNameError"></span>
-            </div>
-            <div class="form-field">
-              <label for="enqEmail">Email</label>
-              <input type="email" id="enqEmail" name="email" required>
-              <span class="form-error" id="enqEmailError"></span>
-            </div>
-            <div class="form-field">
-              <label for="enqPhone">Phone</label>
-              <input type="tel" id="enqPhone" name="phone" required>
-              <span class="form-error" id="enqPhoneError"></span>
-            </div>
-            <div class="form-field">
-              <label for="enqStage">Current Preparation Stage</label>
-              <select id="enqStage" name="stage" required>
-                <option value="">Select stage</option>
-                <option>Just starting out</option>
-                <option>Prelims preparation</option>
-                <option>Mains preparation</option>
-                <option>Repeating attempt</option>
-              </select>
-              <span class="form-error" id="enqStageError"></span>
-            </div>
-            <div class="form-field full">
-              <label for="enqProgram">Preferred Program</label>
-              <select id="enqProgram" name="program" required>
-                <option value="">Select a program</option>
-                <option>Foundation Program</option>
-                <option>Advanced CSE Program</option>
-                <option>Mains Intensive</option>
-                <option>Prelims Edge</option>
-              </select>
-              <span class="form-error" id="enqProgramError"></span>
-            </div>
-            <div class="form-field full">
-              <label for="enqMessage">Message</label>
-              <textarea id="enqMessage" name="message" rows="4" required></textarea>
-              <span class="form-error" id="enqMessageError"></span>
-            </div>
-            <div class="form-submit-row">
-              <button class="btn btn-primary" type="submit">Submit Enquiry</button>
-            </div>
-          </div>
-        </form>
-        <p class="form-success" id="enquirySuccess" role="status"></p>
-      </div>
-      <div id="contact">
-        <p class="eyebrow">CONTACT</p>
-        <h3 style="font-family:var(--font-display); font-size:var(--step-2); margin-top:0.6rem;">Adhishtan IAS Civil Services Academy</h3>
-        <dl class="contact-details">
-          <dt>Location</dt>
-          <dd>Bhubaneswar, Odisha, India</dd>
-          <dt>Email</dt>
-          <dd><a href="mailto:hello@adhishtan.ias">hello@adhishtan.ias</a></dd>
-          <dt>Phone</dt>
-          <dd><a href="tel:+917205749243">+91 7205749243</a></dd>
-          <dt>Hours</dt>
-          <dd>Monday–Saturday: 08:00–20:00<br>Sunday: 09:00–14:00</dd>
-        </dl>
-        <svg class="map-illustration" viewBox="0 0 400 220" role="img" aria-label="Stylised map showing the academy location in Bhubaneswar" style="margin-top:1.6rem;">
-          <rect width="400" height="220" fill="#0B1530"/>
-          <g stroke="#8F733D" stroke-opacity="0.35" stroke-width="1">
-            <path d="M0 40 H400 M0 90 H400 M0 140 H400 M0 190 H400"/>
-            <path d="M60 0 V220 M140 0 V220 M220 0 V220 M300 0 V220 M360 0 V220"/>
-          </g>
-          <path d="M20 170 Q120 60 200 110 T380 60" stroke="#B99752" stroke-width="1.4" fill="none" opacity="0.7"/>
-          <circle cx="200" cy="110" r="7" fill="#B99752"/>
-          <circle cx="200" cy="110" r="16" fill="none" stroke="#B99752" stroke-width="1" opacity="0.6"/>
-          <text x="215" y="106" fill="#F4F0E6" font-size="12" font-family="Inter, sans-serif">Adhishtan IAS</text>
-          <text x="215" y="122" fill="#B99752" font-size="10" font-family="monospace">Bhubaneswar, Odisha</text>
-        </svg>
+        <a class="btn btn-primary" href="pages/enquiry.html">Start Your Learning Journey</a>
+        <a class="btn btn-ghost" href="pages/programs.html">Explore Programs</a>
       </div>
     </div>
   </section>
@@ -437,19 +218,19 @@
         <div class="footer-col">
           <h4>Explore</h4>
           <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#programs">Programs</a></li>
-            <li><a href="#bedrock">Syllabus</a></li>
-            <li><a href="#editorial">Editorial</a></li>
+            <li><a href="pages/about.html">About</a></li>
+            <li><a href="pages/programs.html">Programs</a></li>
+            <li><a href="pages/syllabus.html">Syllabus</a></li>
+            <li><a href="pages/editorial.html">Editorial</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Resources</h4>
           <ul>
-            <li><a href="#pyq">PYQs</a></li>
-            <li><a href="#faculty">Faculty</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="pages/pyq.html">PYQs</a></li>
+            <li><a href="pages/faculty.html">Faculty</a></li>
+            <li><a href="pages/events.html">Events</a></li>
+            <li><a href="pages/enquiry.html#contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -469,7 +250,7 @@
         <a href="#" aria-label="LinkedIn">IN</a>
       </div>
     </div>
-    <p class="footer-signature">Designed by Arpita Nayak | Crafted by Suusri AI</p>
+    <p class="footer-signature">Designed by Arpita Nayak</p>
   </div>
 </footer>
 
@@ -481,7 +262,7 @@
   </div>
 </div>
 
-<script src="config.js"></script>
-<script src="script.js"></script>
+<script src="js/config.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

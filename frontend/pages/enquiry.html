@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enquiry — अधिष्ठान IAS</title>
+<meta name="description" content="Send an enquiry to Adhishtan IAS.">
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="scroll-progress" id="scrollProgress"></div>
+<!-- ============ NAVIGATION ============ -->
+<header class="site-nav" id="siteNav">
+  <a class="nav-brand" href="../index.html" aria-label="Adhishtan IAS home">
+    <img src="../assets/logo.svg" alt="" width="34" height="34">
+    <span class="nav-brand-text">
+      <span class="nav-brand-hi devanagari">अधिष्ठान IAS</span>
+      <span class="nav-brand-en">ADHISHTAN IAS</span>
+    </span>
+  </a>
+
+  <nav class="nav-links" aria-label="Primary">
+    <a href="about.html" data-navlink>About</a>
+    <a href="programs.html" data-navlink>Programs</a>
+    <a href="syllabus.html" data-navlink>Syllabus</a>
+    <a href="editorial.html" data-navlink>Editorial</a>
+    <a href="pyq.html" data-navlink>PYQs</a>
+    <a href="faculty.html" data-navlink>Faculty</a>
+    <a href="events.html" data-navlink>Events</a>
+  </nav>
+
+  <div class="nav-cta">
+    <a class="btn btn-primary" href="enquiry.html">Start Your Learning Journey</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <a href="about.html" data-navlink>About</a>
+  <a href="programs.html" data-navlink>Programs</a>
+  <a href="syllabus.html" data-navlink>Syllabus</a>
+  <a href="editorial.html" data-navlink>Editorial</a>
+  <a href="pyq.html" data-navlink>PYQs</a>
+  <a href="faculty.html" data-navlink>Faculty</a>
+  <a href="events.html" data-navlink>Events</a>
+  <a class="btn btn-primary" href="enquiry.html">Start Your Learning Journey</a>
+</div>
+
+<main id="main" class="page-main">
+
+  <!-- ============ ENQUIRY FORM + CONTACT ============ -->
+  <section class="section section-navy-deep" id="enquiry">
+    <div class="container contact-layout">
+      <div>
+        <p class="eyebrow">ENQUIRY</p>
+        <h2 style="font-size:var(--step-3); margin-top:0.6rem;">Tell us where you are in your preparation.</h2>
+        <form id="enquiryForm" novalidate>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="enqName">Full Name</label>
+              <input type="text" id="enqName" name="name" required>
+              <span class="form-error" id="enqNameError"></span>
+            </div>
+            <div class="form-field">
+              <label for="enqEmail">Email</label>
+              <input type="email" id="enqEmail" name="email" required>
+              <span class="form-error" id="enqEmailError"></span>
+            </div>
+            <div class="form-field">
+              <label for="enqPhone">Phone</label>
+              <input type="tel" id="enqPhone" name="phone" required>
+              <span class="form-error" id="enqPhoneError"></span>
+            </div>
+            <div class="form-field">
+              <label for="enqStage">Current Preparation Stage</label>
+              <select id="enqStage" name="stage" required>
+                <option value="">Select stage</option>
+                <option>Just starting out</option>
+                <option>Prelims preparation</option>
+                <option>Mains preparation</option>
+                <option>Repeating attempt</option>
+              </select>
+              <span class="form-error" id="enqStageError"></span>
+            </div>
+            <div class="form-field full">
+              <label for="enqProgram">Preferred Program</label>
+              <select id="enqProgram" name="program" required>
+                <option value="">Select a program</option>
+                <option>Foundation Program</option>
+                <option>Advanced CSE Program</option>
+                <option>Mains Intensive</option>
+                <option>Prelims Edge</option>
+              </select>
+              <span class="form-error" id="enqProgramError"></span>
+            </div>
+            <div class="form-field full">
+              <label for="enqMessage">Message</label>
+              <textarea id="enqMessage" name="message" rows="4" required></textarea>
+              <span class="form-error" id="enqMessageError"></span>
+            </div>
+            <div class="form-submit-row">
+              <button class="btn btn-primary" type="submit">Submit Enquiry</button>
+            </div>
+          </div>
+        </form>
+        <p class="form-success" id="enquirySuccess" role="status"></p>
+      </div>
+      <div id="contact">
+        <p class="eyebrow">CONTACT</p>
+        <h3 style="font-family:var(--font-display); font-size:var(--step-2); margin-top:0.6rem;">Adhishtan IAS Civil Services Academy</h3>
+        <dl class="contact-details">
+          <dt>Location</dt>
+          <dd>Bhubaneswar, Odisha, India</dd>
+          <dt>Email</dt>
+          <dd><a href="mailto:hello@adhishtan.ias">hello@adhishtan.ias</a></dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:+917205749243">+91 7205749243</a></dd>
+          <dt>Hours</dt>
+          <dd>Monday–Saturday: 08:00–20:00<br>Sunday: 09:00–14:00</dd>
+        </dl>
+        <svg class="map-illustration" viewBox="0 0 400 220" role="img" aria-label="Stylised map showing the academy location in Bhubaneswar" style="margin-top:1.6rem;">
+          <rect width="400" height="220" fill="#0B1530"/>
+          <g stroke="#8F733D" stroke-opacity="0.35" stroke-width="1">
+            <path d="M0 40 H400 M0 90 H400 M0 140 H400 M0 190 H400"/>
+            <path d="M60 0 V220 M140 0 V220 M220 0 V220 M300 0 V220 M360 0 V220"/>
+          </g>
+          <path d="M20 170 Q120 60 200 110 T380 60" stroke="#B99752" stroke-width="1.4" fill="none" opacity="0.7"/>
+          <circle cx="200" cy="110" r="7" fill="#B99752"/>
+          <circle cx="200" cy="110" r="16" fill="none" stroke="#B99752" stroke-width="1" opacity="0.6"/>
+          <text x="215" y="106" fill="#F4F0E6" font-size="12" font-family="Inter, sans-serif">Adhishtan IAS</text>
+          <text x="215" y="122" fill="#B99752" font-size="10" font-family="monospace">Bhubaneswar, Odisha</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer section-navy-deep">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="devanagari">अधिष्ठान IAS</p>
+        <p>Preparation with structure. Service with purpose.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="syllabus.html">Syllabus</a></li>
+            <li><a href="editorial.html">Editorial</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="pyq.html">PYQs</a></li>
+            <li><a href="faculty.html">Faculty</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="enquiry.html#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#" data-modal-open="privacy">Privacy</a></li>
+            <li><a href="#" data-modal-open="terms">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="footerYear"></span> Adhishtan IAS Civil Services Academy. All rights reserved.</p>
+      <div class="footer-social" aria-label="Social links (demonstration placeholders)">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="YouTube">YT</a>
+        <a href="#" aria-label="LinkedIn">IN</a>
+      </div>
+    </div>
+    <p class="footer-signature">Designed by Arpita Nayak</p>
+  </div>
+</footer>
+
+<!-- ============ GENERIC MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle" id="modalBox">
+    <button class="modal-close" id="modalClose" aria-label="Close dialog">&times;</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="../js/config.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,5 +1,3 @@
-
-
 import os
 import re
 import html
@@ -121,10 +119,8 @@ def validate(payload):
 
     return data, errors
 
-
-# --------------------------------------------------------------------------
 # Email composition + delivery
-# --------------------------------------------------------------------------
+
 def build_email(data):
     received = datetime.now(timezone.utc).astimezone().strftime("%d %b %Y, %I:%M %p %Z")
 
@@ -200,10 +196,8 @@ def send_email(msg):
         except Exception:
             pass
 
-
-# --------------------------------------------------------------------------
 # Routes
-# --------------------------------------------------------------------------
+
 @app.get("/api/health")
 def health():
     configured = all([SMTP_HOST, SMTP_USERNAME, SMTP_PASSWORD, COMPANY_EMAIL])
@@ -257,10 +251,8 @@ def contact():
         "message": "Your inquiry has been submitted successfully! Our team will contact you soon.",
     }), 200
 
-
-# --------------------------------------------------------------------------
 # JSON error handlers — the API never returns an HTML error page
-# --------------------------------------------------------------------------
+
 @app.errorhandler(404)
 def not_found(_):
     return jsonify({"success": False, "message": "Endpoint not found."}), 404

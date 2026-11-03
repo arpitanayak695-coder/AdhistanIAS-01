@@ -1,4 +1,3 @@
-
 'use strict';
 
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -15,9 +14,7 @@ const store = {
   }
 };
 
-/* ==========================================================================
-   1. NAVIGATION + SHELL ANIMATIONS
-   ========================================================================== */
+/* 1. NAVIGATION + SHELL ANIMATIONS */
 function initNavigation(){
   const nav = $('#siteNav');
   const toggle = $('#navToggle');
@@ -48,24 +45,12 @@ function initNavigation(){
     }));
   }
 
-  const sections = $$('main > section[id]');
-  const navLinks = $$('[data-navlink]');
-  if(sections.length && navLinks.length && 'IntersectionObserver' in window){
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          const id = entry.target.id;
-          navLinks.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === `#${id}`));
-        }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(s => obs.observe(s));
-  }
+  // Highlight the navbar link of the page that is currently open
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  $$('[data-navlink]').forEach(l => l.classList.toggle('is-active', l.getAttribute('href').split('/').pop() === currentPage));
 }
 
-/* ==========================================================================
-   2. HERO — TEXT REVEAL + 3D "THE BEDROCK"
-   ========================================================================== */
+/* 2. HERO — TEXT REVEAL + 3D "THE BEDROCK"*/
 function initHero(){
   revealHeroHeadline();
  // initThreeScene();
@@ -380,9 +365,7 @@ function showHeroFallback(fallback, wrap){
     </svg>`;
 }
 
-/* ==========================================================================
-   3. THE BEDROCK — SYLLABUS PROGRESS TRACKER
-   ========================================================================== */
+/* 3. THE BEDROCK — SYLLABUS PROGRESS TRACKER*/
 const SYLLABUS = {
   'GS-I': ['History','Geography','Society','Indian Heritage & Culture'],
   'GS-II': ['Polity','Governance','Social Justice','International Relations'],
@@ -493,9 +476,7 @@ function initSyllabusHeatmap(){
   renderTabs(); renderList(); renderPanel();
 }
 
-/* ==========================================================================
-   4. PROGRAMS
-   ========================================================================== */
+/* 4. PROGRAMS*/
 const PROGRAMS = [
   { id:'foundation', name:'Foundation Program', duration:'12 Months', desc:'Complete conceptual foundation across all four General Studies papers, built from the ground up.',
     features:['Paper-wise concept building for GS-I to GS-IV','Weekly structured revision cycles','Basic answer writing introduced from month three','NCERT-to-standard-text bridging modules'] },
@@ -521,18 +502,16 @@ function initPrograms(){
     const p = PROGRAMS.find(x => x.id === btn.dataset.program);
     openModal(`
       <h3 id="modalTitle">${p.name}</h3>
-      <p class="modal-meta">${p.duration} · Frontend demonstration program</p>
+      <p class="modal-meta">${p.duration}</p>
       <div class="modal-body">
         <p>${p.desc}</p>
         <ul class="modal-feature-list">${p.features.map(f=>`<li>${f}</li>`).join('')}</ul>
-        <a class="btn btn-primary" href="#enquiry" style="margin-top:1.6rem;" data-modal-close>Enquire about this program</a>
+        <a class="btn btn-primary" href="enquiry.html" style="margin-top:1.6rem;" data-modal-close>Enquire about this program</a>
       </div>`);
   }));
 }
 
-/* ==========================================================================
-   5. DAILY EDITORIAL READER
-   ========================================================================== */
+/* 5. DAILY EDITORIAL READER*/
 const EDITORIALS = [
   { id:'ed1', title:"The Changing Architecture of India's Urban Governance", date:'8 September 2026', time:'6 min read',
     body:[
@@ -620,10 +599,21 @@ function initEditorialReader(){
   render();
 }
 
-/* ==========================================================================
-   6. PYQ MATRIX ENGINE
-   ========================================================================== */
-const PYQ_SUBJECTS = ['Polity','History','Geography','Economy','Environment','Science & Tech','Ethics','Society','International Relations','Internal Security'];
+/* 6. PYQ MATRIX ENGINE*/
+const PYQ_STRUCTURE = {
+  Prelims: {
+    'GS Paper I': ['Polity','History','Geography','Economy','Environment','Science & Tech','Society','International Relations','Internal Security'],
+    'CSAT': ['Aptitude']
+  },
+  Mains: {
+    'GS-I': ['History','Geography','Society'],
+    'GS-II': ['Polity','International Relations'],
+    'GS-III': ['Economy','Environment','Science & Tech','Internal Security'],
+    'GS-IV': ['Ethics'],
+    'Essay': ['Essay']
+  }
+};
+
 function buildPYQDataset(){
   const templates = [
     'Discuss the significance of {t} in the context of contemporary India.',
@@ -642,23 +632,21 @@ function buildPYQDataset(){
     'Ethics':['emotional intelligence in administration','conflict of interest','whistleblowing','probity in governance'],
     'Society':['caste and social mobility','urbanisation and family structures','gender budgeting'],
     'International Relations':['India-ASEAN relations','multilateral trade negotiations','India\u2019s neighbourhood policy'],
-    'Internal Security':['left-wing extremism','cyber security architecture','border management']
+    'Internal Security':['left-wing extremism','cyber security architecture','border management'],
+    'Aptitude':['reading comprehension','logical reasoning','data interpretation'],
+    'Essay':['social justice','technology and governance','sustainable development']
   };
-  const papersByExam = { Prelims:['GS Paper I','CSAT'], Mains:['GS-I','GS-II','GS-III','GS-IV','Essay'] };
   const data = [];
   let id = 1;
-  for(let year = 2016; year <= 2025; year++){
-    PYQ_SUBJECTS.forEach((subject, si) => {
-      const topics = topicsBySubject[subject];
-      const topic = topics[(year + si) % topics.length];
-      const exam = (year + si) % 2 === 0 ? 'Prelims' : 'Mains';
-      const papers = papersByExam[exam];
-      const paper = papers[(year + si) % papers.length];
-      const template = templates[(year + si) % templates.length];
-      data.push({
-        id: id++, year, exam, paper, subject, topic,
-        question: template.replace('{t}', topic),
-        tags: [subject, topic]
+  for(let year = 2025; year >= 2020; year--){
+    Object.entries(PYQ_STRUCTURE).forEach(([exam, papers]) => {
+      Object.entries(papers).forEach(([paper, subjects]) => {
+        subjects.forEach((subject, si) => {
+          const topics = topicsBySubject[subject];
+          const topic = topics[(year + si) % topics.length];
+          const template = exam === 'Prelims' ? 'Which of the following statements about {t} is correct?' : templates[(year + si) % templates.length];
+          data.push({ id: id++, year, exam, paper, subject, topic, question: template.replace('{t}', topic), tags: [subject, topic] });
+        });
       });
     });
   }
@@ -678,15 +666,16 @@ function initPYQEngine(){
   const loadMoreBtn = $('#pyqLoadMore');
   let pageSize = 6, shown = 6;
 
-  function fillSelect(sel, values){
+  function fillSelect(sel, values, newestFirst){
     const sorted = Array.from(new Set(values)).sort();
+    if(newestFirst) sorted.reverse();
     sorted.forEach(v => {
       const opt = document.createElement('option');
       opt.value = v; opt.textContent = v;
       sel.appendChild(opt);
     });
   }
-  fillSelect(yearSel, dataset.map(d => d.year).sort((a,b)=>b-a));
+  fillSelect(yearSel, dataset.map(d => d.year), true);
   fillSelect(examSel, dataset.map(d => d.exam));
   fillSelect(paperSel, dataset.map(d => d.paper));
   fillSelect(subjectSel, dataset.map(d => d.subject));
@@ -698,7 +687,7 @@ function initPYQEngine(){
       if(examSel.value && d.exam !== examSel.value) return false;
       if(paperSel.value && d.paper !== paperSel.value) return false;
       if(subjectSel.value && d.subject !== subjectSel.value) return false;
-      if(q && !(d.question.toLowerCase().includes(q) || d.subject.toLowerCase().includes(q) || d.topic.toLowerCase().includes(q))) return false;
+      if(q && !(String(d.year).includes(q) || d.exam.toLowerCase().includes(q) || d.paper.toLowerCase().includes(q) || d.question.toLowerCase().includes(q) || d.subject.toLowerCase().includes(q) || d.topic.toLowerCase().includes(q))) return false;
       return true;
     });
   }
@@ -735,9 +724,7 @@ function initPYQEngine(){
   render();
 }
 
-/* ==========================================================================
-   7. LBSNAA TARGET CLOCK
-   ========================================================================== */
+/* 7. LBSNAA TARGET CLOCK*/
 function initTargetClock(){
   const daysEl = $('#clockDays'), hoursEl = $('#clockHours'), minsEl = $('#clockMinutes'), secsEl = $('#clockSeconds');
   const form = $('#clockForm');
@@ -772,9 +759,7 @@ function initTargetClock(){
   });
 }
 
-/* ==========================================================================
-   8. DAILY SANKALP DASHBOARD
-   ========================================================================== */
+/* 8. DAILY SANKALP DASHBOARD */
 const SANKALP_METRICS = [
   { key:'study', label:'Study Hours', max:8, step:0.5, unit:'h' },
   { key:'questions', label:'Questions Solved', max:100, step:5, unit:'' },
@@ -846,14 +831,12 @@ function initStudyDashboard(){
   initSankalpDashboard();
 }
 
-/* ==========================================================================
-   9. FACULTY
-   ========================================================================== */
+/* 9. FACULTY*/
 const FACULTY = [
-  { name:'Dr. Arvind Rao',image:'assets/faculty/arbind-rao.jpeg', spec:'Polity & Governance', bio:'Focuses on constitutional design and the machinery of Indian administration.', exp:'14 years teaching experience', initials:'AR' },
-  { name:'Meera Iyer',image:'assets/faculty/meera-iyer.jpeg' ,spec:'History & Culture', bio:'Builds narrative-driven timelines that connect movements to their administrative aftermath.', exp:'11 years teaching experience', initials:'MI' },
-  { name:'Raghav Menon',image:'assets/faculty/raghav-menon.jpeg' ,spec:'Economy & Environment', bio:'Links macroeconomic policy to on-ground environmental trade-offs aspirants are tested on.', exp:'9 years teaching experience', initials:'RM' },
-  { name:'Ananya Sen',image:'assets/faculty/ananya-sen.jpeg', spec:'Ethics & Essay', bio:'Trains structured reasoning for case studies and essay argumentation under time pressure.', exp:'8 years teaching experience', initials:'AS' }
+  { name:'Dr. Arvind Rao',image:'../assets/faculty/arbind-rao.jpeg', spec:'Polity & Governance', bio:'Focuses on constitutional design and the machinery of Indian administration.', exp:'14 years teaching experience', initials:'AR' },
+  { name:'Meera Iyer',image:'../assets/faculty/meera-iyer.jpeg' ,spec:'History & Culture', bio:'Builds narrative-driven timelines that connect movements to their administrative aftermath.', exp:'11 years teaching experience', initials:'MI' },
+  { name:'Raghav Menon',image:'../assets/faculty/raghav-menon.jpeg' ,spec:'Economy & Environment', bio:'Links macroeconomic policy to on-ground environmental trade-offs aspirants are tested on.', exp:'9 years teaching experience', initials:'RM' },
+  { name:'Ananya Sen',image:'../assets/faculty/ananya-sen.jpeg', spec:'Ethics & Essay', bio:'Trains structured reasoning for case studies and essay argumentation under time pressure.', exp:'8 years teaching experience', initials:'AS' }
 ];
 
 function initFaculty(){
@@ -875,9 +858,7 @@ function initFaculty(){
     </article>`).join('');
 }
 
-/* ==========================================================================
-   10. TESTIMONIALS
-   ========================================================================== */
+/*  10. TESTIMONIALS*/
 const TESTIMONIALS = [
   { quote:'The syllabus tracker changed how I planned my weeks — I finally knew what I hadn\u2019t touched instead of guessing.', name:'S. Bardhan, Mains 2025 attempt' },
   { quote:'Answer writing evaluation was blunt and specific. That was more useful than encouragement would have been.', name:'P. Nair, Repeating aspirant' },
@@ -920,9 +901,7 @@ function initTestimonials(){
   startAutoplay();
 }
 
-/* ==========================================================================
-   11. EVENTS
-   ========================================================================== */
+/* 11. EVENTS*/
 const EVENTS = [
   { id:'ev1', cat:'Strategy', title:'UPSC Strategy Session', date:'21 September 2026', time:'5:00 PM', desc:'A strategic roadmap for first-time aspirants planning their first attempt.' },
   { id:'ev2', cat:'Mains', title:'Mains Answer Writing Lab', date:'28 September 2026', time:'4:00 PM', desc:'Hands-on practice with answer structure, framing and evaluation.' },
@@ -966,9 +945,7 @@ function initEvents(){
   }));
 }
 
-/* ==========================================================================
-   12. ENQUIRY FORM
-   ========================================================================== */
+/* 12. ENQUIRY FORM*/
 function initEnquiryForm(){
   const form = $('#enquiryForm');
   const successEl = $('#enquirySuccess');
@@ -1066,9 +1043,7 @@ function initEnquiryForm(){
   });
 }
 
-/* ==========================================================================
-   13. GENERIC MODAL SYSTEM + LEGAL CONTENT
-   ========================================================================== */
+/* 13. GENERIC MODAL SYSTEM + LEGAL CONTENT */
 const LEGAL_CONTENT = {
   privacy: { title:'Privacy', body:'The enquiry form on this site sends the details you submit to our team by email so we can get back to you. Nothing is stored in a database — the email itself is the only record kept.' },
   terms: { title:'Terms', body:'This site is a design and engineering demonstration for Adhishtan IAS. Faculty profiles, statistics and testimonials are illustrative content built for this build and are not verified institutional claims.' }
@@ -1111,9 +1086,7 @@ function initModalSystem(){
   }));
 }
 
-/* ==========================================================================
-   14. SITEWIDE ANIMATIONS — reveals, counters, footer year
-   ========================================================================== */
+/*14. SITEWIDE ANIMATIONS — reveals, counters, footer year*/
 function initAnimations(){
   const yearEl = $('#footerYear');
   if(yearEl) yearEl.textContent = new Date().getFullYear();
@@ -1161,10 +1134,7 @@ function animateCounter(el){
   }
   requestAnimationFrame(frame);
 }
-
-/* ==========================================================================
-   BOOTSTRAP — each feature isolated so one failure never blocks the rest
-   ========================================================================== */
+/*BOOTSTRAP — each feature isolated so one failure never blocks the rest */
 function bootstrap(){
   const inits = [
     initNavigation, initHero, initSyllabusHeatmap, initEditorialReader,
