@@ -181,12 +181,6 @@ textarea {
 .section-light .section-head .lede {
   color: var(--gray);
 }
-.rule {
-  border: 0;
-  border-top: var(--rule);
-  margin: 0;
-}
-
 .btn {
   display: inline-flex;
   align-items: center;
@@ -245,11 +239,6 @@ textarea {
 .section-light .btn-primary {
   color: var(--navy-dark);
 }
-
-.stat-num {
-  font-family: var(--font-mono);
-}
-
 /* NAVIGATION */
 .site-nav {
   position: fixed;
@@ -454,24 +443,6 @@ textarea {
     ),
     url("../assets/faculty/lbsnaa.jpeg") no-repeat center center / cover;
 }
-.hero-canvas-wrap {
-  display: none !important;
-}
-.hero-canvas-wrap.is-ready {
-  opacity: 1;
-}
-#hero-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.hero-fallback {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-}
 .hero-inner {
   position: relative;
   z-index: 3;
@@ -483,9 +454,6 @@ textarea {
   grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
   gap: clamp(1.5rem, 4vw, 3rem);
   align-items: end;
-}
-.hero-label {
-  margin-bottom: 1.4rem;
 }
 .hero h1 {
   font-size: var(--step-5);
@@ -668,11 +636,11 @@ textarea {
   border: 1px solid;
   white-space: nowrap;
 }
-.status-not {
+.status-notstarted {
   color: var(--gray);
   border-color: rgba(104, 107, 112, 0.4);
 }
-.status-progress {
+.status-inprogress {
   color: var(--brass);
   border-color: var(--brass);
 }
@@ -927,12 +895,6 @@ textarea {
 }
 
 /* PYQ MATRIX */
-.pyq-note {
-  font-size: 0.78rem;
-  color: var(--gray);
-  font-family: var(--font-mono);
-  margin-top: 0.6rem;
-}
 .pyq-controls {
   display: flex;
   flex-wrap: wrap;
@@ -1053,13 +1015,6 @@ textarea {
   color: var(--ivory);
   padding: 0.65rem 0.9rem;
 }
-.clock-note {
-  margin-top: 1rem;
-  font-size: 0.78rem;
-  color: var(--gray);
-  font-family: var(--font-mono);
-}
-
 /* DAILY SANKALP DASHBOARD */
 .sankalp-grid {
   display: grid;
@@ -1205,13 +1160,6 @@ textarea {
   color: var(--ivory-soft);
   font-size: 0.85rem;
 }
-.faculty-demo-note {
-  margin-top: 2.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--gray);
-  text-align: center;
-}
 /* ACHIEVEMENTS*/
 .achieve-grid {
   display: grid;
@@ -1235,14 +1183,6 @@ textarea {
   font-size: 0.85rem;
   color: var(--gray);
 }
-.achieve-disclaimer {
-  text-align: center;
-  margin-top: 2rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--gray);
-}
-
 /* TESTIMONIALS*/
 .testimonial-wrap {
   max-width: 760px;
